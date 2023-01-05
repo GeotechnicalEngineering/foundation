@@ -13,7 +13,7 @@ function SelectTestPage() {
   const router = useRouter();
   return (
     <div className=" relative min-h-screen bg-ciBackground p-4  ">
-      {/* <Divider name="حالت آزمون" />
+      <Divider name="حالت آزمون" />
       <div className="flex justify-center gap-4  md:justify-start">
         <ItemTest
           name="نظارت"
@@ -103,7 +103,7 @@ function SelectTestPage() {
             )}
           </section>
         </motion.div>
-      )} */}
+      )}
       <Divider name="حالت مطالعه" />
       <HelpIcon />
 
@@ -118,6 +118,8 @@ function SelectTestPage() {
             <ItemBook key={index} index={index} />
           )
         )}
+         <ItemNewBook  title='2800' />
+         <ItemNewBook  title= "قانون نظام مهندسی" />
       </motion.section>
     </div>
   );
@@ -186,3 +188,31 @@ function ItemBook({ index }) {
     </div>
   );
 }
+
+function ItemNewBook({ title }) {
+  const router = useRouter();
+  return (
+    <div
+      onClick={() => router.push(`test/book/${title}`)}
+      className=" relative  bg-ciOrange rounded-lg flex cursor-pointer  flex-col items-center justify-center object-fill 
+       filter duration-100 ease-out hover:brightness-150 active:scale-95"
+    >
+      <span className=" font-bold">{title}</span>
+      
+      <div
+        className="absolute top-0 right-0 flex h-7  w-7 items-center justify-center
+                   rounded-md     bg-gray-300 shadow-lg  "
+      >
+        <span className="font-bold text-ciBackground">
+          {testDatas?.[title]?.length ?? 0}
+        </span>
+      </div>
+      {/* <img
+        className="w-full rounded-xl "
+        src={`/images/book/${1}.jpg`}
+        alt=""
+      /> */}
+    </div>
+  );
+}
+

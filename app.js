@@ -5,7 +5,7 @@ const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
 const hostname = process.env.NODE_ENV !== 'production'?'localhost':'nigthbird.ir'
-const port = 3000
+const port = 3002
 // when using middleware `hostname` and `port` must be provided below
 const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()

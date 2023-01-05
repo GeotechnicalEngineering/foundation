@@ -5,11 +5,15 @@ import Link from "next/link";
 import Layout from "../components/layout/Layout";
 import { CategoryData } from "../data/data";
 import {motion} from 'framer-motion'
+import Header from "../components/ui/Header";
+import Hero from "../components/Hero";
 
 export default function Home() {
   return (
     
       <div className=" min-h-screen bg-ciBackBeauty p-3 ">
+        <Header/>
+        <Hero/>
         <motion.div 
         initial={{opacity:0 , y:-100}}
         animate={{opacity:1,y:0}}

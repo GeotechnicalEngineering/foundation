@@ -3,7 +3,9 @@ import BookMarkIcon from "../icons/BookMarkIcon";
 import EraserIcon from "../icons/EraserIcon";
 import LeftIcon from "../icons/LeftIcon";
 import RightIcon from "../icons/RightIcon";
-
+import { RiEyeCloseLine, RiEye2Line } from "react-icons/ri";
+import { FaChevronCircleDown } from "react-icons";
+import {BsFillCaretRightFill,BsFillCaretLeftFill} from "react-icons/bs"
 function ItemReadTest({
   data,
   changeQuestion,
@@ -23,17 +25,16 @@ function ItemReadTest({
     paragraph,
     page,
   } = data;
-
+  const [showAnswer, setShowAnswer] = useState(false);
   function onChangeValue(event) {
     selectAnsQuestion(event.target.value, indexQuestion);
   }
-  function classForCorrectAns(witchOption){
-    if(witchOption == correctOption){
-      return 'shadow-test rounded-lg  bg-ciGreen px-4 py-2 text-justify text-sm font-bold'
-    }else{
-      return ''
+  function classForCorrectAns(witchOption) {
+    if (witchOption == correctOption && showAnswer) {
+      return "shadow-test rounded-lg  bg-ciGreen px-4 py-2 text-justify text-sm font-bold";
+    } else {
+      return "";
     }
-
   }
 
   return (
@@ -47,46 +48,59 @@ function ItemReadTest({
         onChange={() => onChangeValue(event)}
       >
         <div className="flex ">
-          <p
-            className={classForCorrectAns(1)}
-          >
-            1. {option1}
-          </p>
+          <p className={classForCorrectAns(1)}>1. {option1}</p>
         </div>
         <div className="flex text-justify text-sm">
           <p className={classForCorrectAns(2)}>2. {option2}</p>
         </div>
         <div className="flex text-justify text-sm">
-          <p  className= {classForCorrectAns(3)}>3. {option3}</p>
+          <p className={classForCorrectAns(3)}>3. {option3}</p>
         </div>
         <div className="flex text-justify text-sm">
-          <p  className={classForCorrectAns(4)}>4. {option4}</p>
+          <p className={classForCorrectAns(4)}>4. {option4}</p>
         </div>
       </div>
-      <div className="my-3 flex justify-between">
-        <div className="shadow-page  rounded-lg bg-gray-200 px-3 py-2">
-          <span className="ml-2 text-xs font-bold">صفحه</span>
-          <span className="font-bold">{page}</span>
+      {showAnswer && (
+        <div className="my-3 flex justify-between">
+          <div className="shadow-page  rounded-lg bg-gray-200 px-3 py-2">
+            <span className="ml-2 text-xs font-bold">صفحه</span>
+            <span className="font-bold">{page}</span>
+          </div>
+          <div className="shadow-page  whitespace-nowrap rounded-lg bg-gray-200 px-3 py-2">
+            <span className="ml-2 text-xs font-bold">بند</span>
+            <span className="font-bold">{paragraph}</span>
+          </div>
+          <div className="shadow-page  rounded-lg bg-gray-200 px-3 py-2 ">
+            <span className="ml-2 text-xs font-bold">{title}</span>
+          </div>
         </div>
-        <div className="shadow-page  whitespace-nowrap rounded-lg bg-gray-200 px-3 py-2">
-          <span className="ml-2 text-xs font-bold">بند</span>
-          <span className="font-bold">{paragraph}</span>
-        </div>
-        <div className="shadow-page  rounded-lg bg-gray-200 px-3 py-2 ">
-          <span className="ml-2 text-xs font-bold">{title}</span>
-        </div>
-      </div>
-      <div className="flex  items-center ">
-        <RightIcon
+      )}
+      <div className="flex  items-center  ">
+        {/* <RightIcon
           className="text-ciCurrentLine "
           onClick={() => {
             changeQuestion(1);
           }}
-        />
-        <LeftIcon
+        /> */}
+        <BsFillCaretRightFill size={25}/>
+        {/* <LeftIcon
           className={`${number == 1 ? "text-ciTiter " : "text-ciCurrentLine"}`}
           onClick={() => changeQuestion(-1)}
-        />
+        /> */}
+        <BsFillCaretLeftFill size={25}/>
+        {showAnswer ? (
+          <RiEye2Line
+            size={25}
+            onClick={() => setShowAnswer((e) => !e)}
+            className="mr-2 cursor-pointer text-green-700 hover:scale-125"
+          />
+        ) : (
+          <RiEyeCloseLine
+            size={25}
+            onClick={() => setShowAnswer((e) => !e)}
+            className="mr-2  cursor-pointer hover:scale-125"
+          />
+        )}
 
         <BookMarkIcon
           onClick={() => bookedAnsQuestion(indexQuestion)}
