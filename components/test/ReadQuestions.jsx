@@ -85,7 +85,7 @@ function ReadQuestions({ book }) {
         )}
       </div>
       <div
-        className=" mt-9  flex  w-full flex-wrap gap-1   md:mt-8"
+        className=" mt-9  flex  w-full flex-wrap gap-1 max-w-6xl   md:mt-8"
         style={{ direction: "ltr" }}
       >
         {questions?.map((item, index) => (

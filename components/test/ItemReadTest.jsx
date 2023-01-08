@@ -76,18 +76,12 @@ function ItemReadTest({
         </div>
       )}
       <div className="flex  items-center  ">
-        {/* <RightIcon
-          className="text-ciCurrentLine "
-          onClick={() => {
+       
+        <BsFillCaretRightFill onClick={() => {
             changeQuestion(1);
-          }}
-        /> */}
-        <BsFillCaretRightFill size={25}/>
-        {/* <LeftIcon
-          className={`${number == 1 ? "text-ciTiter " : "text-ciCurrentLine"}`}
-          onClick={() => changeQuestion(-1)}
-        /> */}
-        <BsFillCaretLeftFill size={25}/>
+          }} className="text-ciCurrentLine cursor-pointer hover:scale-105 active:scale-95 " size={25}/>
+        
+        <BsFillCaretLeftFill onClick={() => changeQuestion(-1)} className="text-ciCurrentLine cursor-pointer hover:scale-105 active:scale-95 " size={25}/>
         {showAnswer ? (
           <RiEye2Line
             size={25}
@@ -110,11 +104,11 @@ function ItemReadTest({
         />
       </div>
 
-      <div className="absolute right-0 left-0 -bottom-4 flex justify-center">
+      { false &&<div className="absolute right-0 left-0 -bottom-4 flex justify-center">
         <p className="flex h-8 w-8 items-center justify-center rounded-full border border-ciTiter bg-ciForeground p-4 font-bold shadow-2xl">
           {data.number}
         </p>
-      </div>
+      </div>}
     </div>
   );
 }
