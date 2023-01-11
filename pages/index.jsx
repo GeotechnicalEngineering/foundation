@@ -7,24 +7,14 @@ import { CategoryData } from "../data/data";
 import { motion } from "framer-motion";
 import Header from "../components/ui/Header";
 import Hero from "../components/Hero";
+import Navbar from "../components/ui/Navbar/Navbar";
 
 export default function Home() {
   return (
-    <div className=" min-h-screen bg-ciBackBeauty p-3 ">
-      {/* <Header/>
-        <Hero/> */}
-      <div className=" flex  items-center  gap-5 text-ciForeground">
-        <img
-          className="h-20 w-20    rounded-3xl bg-ciBackgroundTwo md:h-32 md:w-32"
-          src="/images/foundation/main2.webp"
-          alt=""
-        />
-
-        <p className=" my-2 font-bold text-ciPink md:my-5 md:text-3xl">
-          مهندسی{" "}
-        </p>
-        <p className=" animate-pulse font-bold md:text-xl">راحتتر مهندسی کن</p>
-      </div>
+    <div className="relative min-h-screen bg-gray-100  ">
+       <Navbar/>
+        {/* <Hero/>  */}
+      
       <section className="my-8 mx-auto flex max-w-5xl flex-wrap justify-center  gap-8 ">
         {CategoryData.map((item, index) => (
           <>
