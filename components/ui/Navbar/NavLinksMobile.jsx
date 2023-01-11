@@ -11,7 +11,7 @@ function NavLinksMobile() {
     <>
       {links.map((link, index) => (
         <div key={index}>
-          <div className="group mb-1 rounded-md bg-blue-100 py-3 px-3 text-right ">
+          <div className="group mb-1 rounded-md bg-blue-100 py-3 px-3 text-right shadow ">
             <h1
               className="group flex items-center justify-between  "
               onClick={() => {
@@ -40,29 +40,30 @@ function NavLinksMobile() {
                         ? setSubHeading(slinks.Head)
                         : setSubHeading("")
                     }
-                    className="flex items-center justify-between  py-4 pl-7 pr-5  font-semibold "
+                    className="mb-1 mt-3 flex items-center justify-between rounded-lg bg-gray-100 py-4  pl-7 pr-5 font-semibold  shadow "
                   >
                     {slinks.Head}
 
                     <span className="inline text-xl">
-                      <a
-                        name={`${
-                          subHeading === slinks.Head
-                            ? "chevron-up"
-                            : "chevron-down"
-                        }`}
-                      ></a>
+                      {subHeading === slinks.Head ? (
+                        <IoIosArrowUp />
+                      ) : (
+                        <IoIosArrowDown />
+                      )}
                     </span>
                   </h1>
                   <div
-                    className={`${
+                    className={`rounded-sm bg-gray-100  ${
                       subHeading === slinks.Head ? "md:hidden" : "hidden"
                     }`}
                   >
-                    {slinks.sublink.map((slink) => (
-                      <li className="py-3 pl-14">
-                        <a href={slink.link}>{slink.name}</a>
-                      </li>
+                    {slinks.sublink.map((slink, index) => (
+                      <div
+                        key={index}
+                        className="mb-1  shadow rounded-sm py-2 pr-6 font-bold"
+                      >
+                        {slink.name}
+                      </div>
                     ))}
                   </div>
                 </div>
